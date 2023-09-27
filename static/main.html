@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todoshka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/todoshka.css">
+    <link rel="shortcut icon" href="/static/imgs/icon.svg" type="image/x-icon">
+</head>
+<body>
+    <div class="fixed_block hidden" id="modal">
+        <div class="modal">
+            <div class="buttons">
+                <a href="#" id="cancel_modal">Отмена</a>
+                <a href="#" id="submit">Сохранить</a>
+            </div>
+            <form action="">
+                <label for="header" class="header_label">Заголовок</label>
+                <input type="text" name="header" id="header">
+
+                <label for="description" class="header_label">Описание</label>
+                <textarea name="description" id="description" cols="30" rows="5"></textarea>
+
+                <label for="" class="header_label">Теги</label>
+                <input type="checkbox" name="work" id="work_tag" class="tag_btn"> <label for="work_tag" class="tag">
+                    <img src="/static/imgs/work.svg" alt="работа.svg">
+                    Работа</label>
+                <input type="checkbox" name="study" id="study_tag" class="tag_btn"> <label for="study_tag" class="tag">
+                    <img src="/static/imgs/study.svg" alt="работа.svg">
+                    Учеба</label>
+                <input type="checkbox" name="entertainment" id="entertainment_tag" class="tag_btn"> <label for="entertainment_tag" class="tag">
+                    <img src="/static/imgs/entertainment.svg" alt="работа.svg">
+                    Досуг</label>
+                <input type="checkbox" name="family" id="family_tag" class="tag_btn"> <label for="family_tag" class="tag">
+                    <img src="/static/imgs/family.svg" alt="работа.svg">
+                    Семья</label>
+            </form>
+        </div>
+    </div>
+    <header>     
+    </header>
+    <main>
+        <div class="aside_board">
+            <div class="logo">todoshka</div>
+            <div class="tags">
+                <ul class="tags_list">
+                    <li>
+                        <img src="/static/imgs/work.svg" alt="work ellipse">
+                        Работа
+                    </li>
+                    <li>
+                        <img src="/static/imgs/study.svg" alt="study ellipse">
+                        Учеба
+                    </li>
+                    <li>
+                        <img src="/static/imgs/entertainment.svg" alt="entertainment ellipse">
+                        Досуг
+                    </li>
+                    <li>
+                        <img src="/static/imgs/family.svg" alt="family ellipse">
+                        Семья
+                    </li>
+                </ul>
+            </div>
+            <div class="checkbox_container">
+                <label class="hidden">
+                    <input type="checkbox" name="hidden_checkbox" id="hideTodo">
+                    <span class="custom-checkbox"></span>
+                    Скрыть<br>выполненные
+                </label>
+            </div>
+            </div>
+            <div class="plus">
+                <input type="image" src="/static/imgs/plus 1.svg" alt="Кнопка plus" id="open_modal">
+            </div>
+        <div class="notes">
+            <div class="left_column">
+                {{range $index, $todo := .Todos}}
+                    {{with eq (index $.Positions $index) 0}}
+                    <div class="card {{if $todo.Completed}} done {{end}}" id="card-{{$todo.Id}}">
+                        <div class="header_card">
+                                <div class="title" id="title-{{$todo.Id}}">{{$todo.Title}}</div>
+                            <div class="dots"> 
+                                 <input type="image" src="/static/imgs/dots.svg" alt="Кнопка dots" id="dots"> 
+                                 <ul class="dropdown_content">
+                                    <li><a href="#" data-todo-id="{{$todo.Id}}" class="delete-button">Удалить</a></li>
+                                    <li><a href="#" data-todo-id="{{$todo.Id}}" class="update-button">Редактировать</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="article" id="article-{{$todo.Id}}">{{$todo.Description}}</div>
+                        <div class="footer_card">
+                            <div class="card-tags" id="tags-{{$todo.Id}}">
+                                {{range $todo.Type}}
+                                <img src="/static/imgs/{{.}}.svg" alt="{{.}}">
+                                {{end}}
+                            </div>
+                            <div class="done_checkbox_container">
+                                <label class="done">
+                                    <input type="checkbox" name="done_checkbox" class="done-button" data-todo-id="{{$todo.Id}}" {{if $todo.Completed}} checked {{end}}>
+                                    <span class="done-checkbox"></span>
+                                Выполнено
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    {{end}}
+                {{end}}
+            </div>
+            
+
+            <div class="right_column">
+                {{range $index, $todo := .Todos}}
+                    {{with eq (index $.Positions $index) 1}}
+                    <div class="card {{if $todo.Completed}} done {{end}}" id="card-{{$todo.Id}}">
+                        <div class="header_card">
+                                <div class="title" id="title-{{$todo.Id}}">{{$todo.Title}}</div>
+                            <div class="dots"> 
+                                 <input type="image" src="/static/imgs/dots.svg" alt="Кнопка dots" id="dots"> 
+                                 <ul class="dropdown_content">
+                                    <li><a href="#" data-todo-id="{{$todo.Id}}" class="delete-button">Удалить</a></li>
+                                    <li><a href="#" data-todo-id="{{$todo.Id}}" class="update-button">Редактировать</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="article" id="article-{{$todo.Id}}">{{$todo.Description}}</div>
+                        <div class="footer_card">
+                            <div class="card-tags" id="tags-{{$todo.Id}}">
+                                {{range $todo.Type}}
+                                <img src="/static/imgs/{{.}}.svg" alt="{{.}}">
+                                {{end}}
+                            </div>
+                            <div class="done_checkbox_container">
+                                <label class="done">
+                                    <input type="checkbox" name="done_checkbox" class="done-button" data-todo-id="{{$todo.Id}}" {{if $todo.Completed}} checked {{end}}>
+                                    <span class="done-checkbox"></span>
+                                Выполнено
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    {{end}}
+                {{end}}
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+version: "1"
+services:
+  todo-app:
+    build: ./
+    depends_on:
+      - pgdb
+    command: ./wait-for-postgres.sh pgdb ./main
+    container_name: server
+    ports:
+      - 80:80
+    environment:
+      - CONFIG_PATH=/app/config/config.yaml
+      - DB_PASSWORD=postgres
+    volumes:
+      - ./config/config.yaml:/app/config/config.yaml
+      - ./static:/app/static
+  pgdb:
+    image: postgres:latest
+    container_name: pgdb
+    restart: always
+    ports:
+      - 5436:5432
+    environment:
+      - POSTGRES_DB=todos
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data

@@ -1,0 +1,357 @@
+:root {
+    --main-color: #101615;
+    --background-color: #FDFDFD;
+    --card-color: #E2F4F2
+  }
+
+body{
+    margin:0;
+}
+
+main 
+{
+    background: var(--background-color);
+    display: flex;
+}
+
+.logo
+{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    margin-top: 60px;
+    margin-left: 70px;
+    font-size: 27px;
+}
+
+.aside_board 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 285px;
+    min-height: 350px;
+    height: 95vh;
+    /* border: 5px solid #ccc; */
+}
+
+div.tags
+{
+    margin-bottom: auto;
+    margin-top: 33px;
+}
+
+ul 
+{
+    list-style: none;
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    
+}
+
+li 
+{
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+    gap: 10px;
+}
+
+label.hidden 
+{
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    margin-left: 70px;
+    opacity: 50%;
+}
+
+label.done 
+{
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    margin-left: 70px;
+    opacity: 50%;
+}
+
+input[type = "checkbox"] 
+{
+    display: none;
+}
+
+.custom-checkbox, .done-checkbox {
+    content: url(http://localhost/static/imgs/ion_checkbox-outline.svg);
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + .custom-checkbox 
+{
+    content: url(/static/imgs/ion_checkbox-outline.svg);
+    content: url(/static/imgs/Vector.svg);
+}
+
+input[type="checkbox"]:checked + .done-checkbox 
+{
+    content: url(/static/imgs/ion_checkbox-outline.svg);
+    content: url(/static/imgs/Vector.svg);
+}
+
+.tags_list 
+{
+    margin-left: 30px;
+}
+
+.checkbox_container label
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.done_checkbox_container label 
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 30px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.footer_card 
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.notes 
+{
+    min-width: 1100px;
+    display: flex; 
+    flex-wrap: wrap; 
+    margin-left: 60px;
+    margin-top: 160px;
+    vertical-align: top;
+}
+
+.notes .left_column, .notes .right_column{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+}
+
+.card 
+{
+    width: 500px;
+    min-height: 182px;
+    border-radius: 6px;
+    background: var(--card-color);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    margin: 10px;
+}
+
+div.title 
+{
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 30px 30px;
+}
+
+.header_card 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dots 
+{
+    margin-right: 34px;
+}
+
+#dots{
+    padding: 10px;
+    border-radius: 30px;
+}
+
+ul.dropdown_content{
+    margin:0;
+    padding: 0;
+    display: none;
+    z-index: 1;
+    min-width: 100px;
+    position:absolute;
+    border-radius: 4px;
+}
+
+.dropdown_content li{
+    display: block;
+    margin: 0;
+}
+
+.dropdown_content a{
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    text-align: left;
+    float: none;
+    color: #101615;
+    background-color: #f9f9f9;
+    padding: 12px;
+}
+
+.dropdown_content a:hover{
+    background-color: #ddd;
+}
+
+.dots:hover .dropdown_content{
+    display: block;
+}
+
+
+div.article 
+{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0 30px;
+}
+
+div.plus 
+{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 60px;
+    right: 70px;
+
+}
+
+.card-tags 
+{
+    display: flex;
+    gap: 10px;
+    width: 30px;
+    height: 30px;
+    margin-left: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}   
+
+.card.done{
+    background-color: #cbdcda;
+}
+
+.hidden{
+    display: none;
+}
+
+.fixed_block{
+    /* display: none; */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+}
+
+.modal{
+    display: block;
+    position: absolute;
+    background: white;
+    width: 880px;
+    left:50%;
+    top:50%;    
+    margin-left:-440px;
+    margin-top:-300px;
+    padding: 10px;
+    border-radius: 6px;
+    padding: 30px;
+    color: var(--main-color);
+    font-family: 'Nunito', sans-serif;
+}
+
+.modal .buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--main-color);
+    margin-bottom: 17px;
+}
+
+.modal .buttons a{
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 18px;
+}
+
+.modal .buttons a:last-child{
+    padding: 10px 16px;
+    color: var(--background-color);
+    background-color: var(--main-color);
+    border-radius: 6px;
+}
+
+.modal form{
+    font-size: 18px;
+}
+
+label.header_label{
+    font-weight: 600;
+    display: block;
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+
+input[type='text'], textarea{
+    background-color: var(--card-color);
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.modal textarea{
+    overflow: auto;
+    white-space: pre-wrap;
+    resize: none;
+}
+
+.modal #description{
+    height: auto;
+    resize: vertical;
+}
+
+.tag{
+    display: inline-flex;
+    justify-content:space-around;
+    align-items: center;
+    padding: 8px 14px;
+    vertical-align: middle;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.choosed{
+    background-color: var(--card-color);
+}
+
+.tag img{
+    margin-right: 10px;
+}
+
+

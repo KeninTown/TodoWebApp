@@ -1,0 +1,10 @@
+env: "prod"
+server:
+  port: ":80"
+  host: "localhost"
+db:
+  user: "postgres"
+  password: "postgres"
+  dbname: "todos"
+  host: "pgdb"
+  port: 5432
