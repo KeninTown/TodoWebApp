@@ -33,24 +33,23 @@ func (s Server) Run(ctx context.Context) {
 
 	//handle static files
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
-	// router.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
 
-	//TODO: send html, css, js files
+	//send main page
 	router.HandleFunc("/", middleware.Logger(s.Log, handlers.SendMainPage(s.Log, s.Usecase))).Methods("GET")
 
 	//TODO: get todo by query id
 	router.HandleFunc("/todo", middleware.Logger(s.Log, handlers.GetTodo(s.Log, s.Usecase))).Methods("GET")
 
-	//TODO: create todo
+	//create todo
 	router.HandleFunc("/todos", middleware.Logger(s.Log, handlers.CreateTodo(s.Log, s.Usecase))).Methods("POST")
 
-	//TODO: get todos
+	//get todos
 	router.HandleFunc("/todos", middleware.Logger(s.Log, handlers.GetTodos(s.Log, s.Usecase))).Methods("GET")
 
-	//TODO: delete todo
+	//delete todo
 	router.HandleFunc("/todos", middleware.Logger(s.Log, handlers.DeleteTodo(s.Log, s.Usecase))).Methods("DELETE")
 
-	//TODO: complete todo
+	//complete todo
 	router.HandleFunc("/complete", middleware.Logger(s.Log, handlers.CompleteTodo(s.Log, s.Usecase))).Methods("PUT")
 
 	//update todo
